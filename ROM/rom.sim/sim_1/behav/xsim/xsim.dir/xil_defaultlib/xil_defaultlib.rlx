@@ -1,0 +1,9 @@
+0.6
+2017.4
+Dec 15 2017
+21:07:18
+F:/FPGA/ROM/rom.sim/sim_1/behav/xsim/glbl.v,1513215259,verilog,,,,glbl,,,,,,,,
+F:/FPGA/ROM/rom.srcs/sim_1/new/vft_rom_test.v,1729418475,verilog,,,,vft_rom_test,,,,,,,,
+F:/FPGA/ROM/rom.srcs/sources_1/ip/ila_0/sim/ila_0.v,1729416281,verilog,,F:/FPGA/ROM/rom.srcs/sources_1/ip/rom_ip/sim/rom_ip.v,,ila_0,,,,,,,,
+F:/FPGA/ROM/rom.srcs/sources_1/ip/rom_ip/sim/rom_ip.v,1729419078,verilog,,F:/FPGA/ROM/rom.srcs/sources_1/new/rom_test.v,,rom_ip,,,,,,,,
+F:/FPGA/ROM/rom.srcs/sources_1/new/rom_test.v,1729418630,verilog,,F:/FPGA/ROM/rom.srcs/sim_1/new/vft_rom_test.v,,rom_test,,,,,,,,

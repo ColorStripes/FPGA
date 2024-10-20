@@ -1,0 +1,8 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "F:/FPGA/ROM/rom.srcs/sources_1/ip/ila_0/sim/ila_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ila_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "F:/FPGA/ROM/rom.srcs/sources_1/ip/rom_ip/sim/rom_ip.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module rom_ip
+INFO: [VRFC 10-2263] Analyzing Verilog file "F:/FPGA/ROM/rom.srcs/sources_1/new/rom_test.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module rom_test
+INFO: [VRFC 10-2263] Analyzing Verilog file "F:/FPGA/ROM/rom.srcs/sim_1/new/vft_rom_test.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module vft_rom_test
