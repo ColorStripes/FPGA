@@ -1,6 +1,7 @@
 # FPGA:
 *.wdb
-*..btree
+*.btree
+*.wcfg
 # 排除所有.开头的隐藏文件:
 .*
 
