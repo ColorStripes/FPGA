@@ -1,0 +1,5 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "F:/FPGA/EEPROM/EEPROM.sim/sim_1/synth/timing/xsim/i2c_eerom_tb_time_synth.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_eerom_top
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [VRFC 10-2263] Analyzing Verilog file "F:/FPGA/EEPROM/EEPROM.srcs/sim_1/new/i2c_eerom_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_eerom_tb

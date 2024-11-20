@@ -1,4 +1,4 @@
-`timescale 1ns / 100ps
+`timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
 // Engineer: 
@@ -21,8 +21,8 @@
 
 
 module ax_debounce(
-    input clk,
-    input rst,
+    input sys_clk,
+    input rst_n,
     input button_in,
     output reg button_posedge,
     output reg button_negedge,
@@ -31,9 +31,9 @@ module ax_debounce(
 
 
 parameter N = 32;
-parameter FREQ = 50;
-parameter MAX_TIME = 20;                                        //消抖时间 ms
-localparam  TIMER_MAX_VAL = 1000 * FREQ * MAX_TIME;             //MHz * 1000 是1ms计数次数
+parameter FREQ = 50;                                        //MHz 
+parameter MAX_TIME = 2;                                  //消抖时间 us
+localparam  TIMER_MAX_VAL = FREQ * MAX_TIME;             //是MAX_TIME us计数次数
 
 reg [N-1 : 0] q_reg;
 reg [N-1 : 0] q_next;
@@ -55,8 +55,8 @@ always @(q_reset, q_add, q_reg) begin
     endcase
 end
 
-always @(posedge clk or posedge rst) begin
-    if(rst == 1'b1) begin
+always @(posedge sys_clk or negedge rst_n) begin
+    if(!rst_n) begin
         DFF1 <= 1'b0;
         DFF2 <= 1'b0;
         q_reg <= {N{1'b0}};
@@ -68,8 +68,8 @@ always @(posedge clk or posedge rst) begin
     end
 end
 
-always @(posedge clk or posedge rst) begin
-    if(rst === 1'b1)
+always @(posedge sys_clk or negedge rst_n) begin
+    if(!rst_n)
         button_out <= 1'b1;
     else if(q_reg == TIMER_MAX_VAL)
         button_out <= DFF2;
@@ -93,8 +93,8 @@ posedge                  ___
 negedge      ___
             |   |
 */
-always @(posedge clk or posedge rst) begin
-    if(rst == 1'b1) begin
+always @(posedge sys_clk or negedge rst_n) begin
+    if(!rst_n) begin
         button_out_d0 <= 1'b1;
         button_posedge <= 1'b0;
         button_negedge <= 1'b0;

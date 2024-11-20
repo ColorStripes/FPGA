@@ -1,0 +1,7 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"i2c_eerom_tb_func_synth.v" \
+"../../../../../EEPROM.srcs/sim_1/new/i2c_eerom_tb.v" \
+
+# Do not sort compile order
+nosort

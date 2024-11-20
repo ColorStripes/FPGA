@@ -60,11 +60,10 @@ always @(posedge clk or posedge rst_n) begin
     else begin
         case(state)
             IDLE:begin
-                period <= 32'd17179;                            //200Hz   period = 200 * 2 ^ 32 / 50000000
+                period <= 32'd17179;                            //200Hz   period = 200 * FFFFFFFF / 50000000
                 state <= PWM_PLUS;
                 duty <= DUTY_MIN_VALUE;
             end
-
             PWM_PLUS:begin
                 if(duty > DUTY_MAX_VALUE - DUTY_STEP) begin
                     pwm_flag <= 1'b1;
@@ -111,8 +110,8 @@ pwm
 )pwm(
     .clk(clk),
     .rst(rst_n),
-    .period(period),      //输出频率 * 2的N次方 / 时钟频率      2的N次方就是为宽�?代表的数�?
-    .duty(duty),        //占空�? = duty / 2的N次方
+    .period(period),      //输出频率 * 2的N次方 / 时钟频率      2的N次方就是为带宽代表的数值
+    .duty(duty),        //占空比 = duty / 2的N次方
     .pwm_out(pwm_out)
 );
 

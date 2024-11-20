@@ -26,8 +26,8 @@ module pwm
 )(
     input clk,
     input rst,
-    input [N-1 : 0] period,      //输出频率 * 2的N次方 / 时钟频率      2的N次方就是为宽所代表的数值
-    input [N-1 : 0] duty,        //占空比 = duty / 2的N次方
+    input [N-1 : 0] period,      //输出频率 * 周期计数器值 / 时钟频率      
+    input [N-1 : 0] duty,        //占空比 = duty / 周期计数器值
     output pwm_out
 );
 
