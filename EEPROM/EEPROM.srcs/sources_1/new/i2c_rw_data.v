@@ -34,7 +34,7 @@ module i2c_rw_data(
     output reg [15 : 0] byte_addr,
     output reg [7 : 0] wr_data,
     output reg rd_en,
-    output wire [7 : 0] data_count
+    output reg [7 : 0] data_out
 );
 
     parameter I2C_SCL_FREQ = 400_000;
@@ -43,19 +43,7 @@ module i2c_rw_data(
 
 
     reg [19 : 0] cnt_start;
-    //reg [1 : 0]  cnt_4;
-
-
-    // always @(posedge i2c_clk or negedge rst_n) begin
-    //     if(!rst_n) 
-    //         cnt_4 <= 1'b0;
-    //     else if(i2c_start)
-    //         cnt_4 <= cnt_4 + 1'b1;
-    //     else
-    //         cnt_4 <= 1'b0;
-    // end
-
-
+ 
 
     //i2c_start
     always @(posedge i2c_clk or negedge rst_n) begin
@@ -65,8 +53,6 @@ module i2c_rw_data(
             i2c_start <= 1'b1;
         else
             i2c_start <= 1'b0;
-        // else if(cnt_4 == 3)
-        //     i2c_start <= 1'b0;
     end
 
     always @(posedge i2c_clk or negedge rst_n) begin
@@ -160,16 +146,16 @@ accross_clock_write
     end
 
 
-    assign data_count = rd_data;
-    // always @(posedge i2c_clk or negedge rst_n) begin
-    //     if (!rst_n) begin
-    //         data_count <= 8'd0;
-    //     end
-    //     else if(rd_en & i2c_end)
-    //         data_count <= rd_data;
-    //     else    
-    //         data_count <= data_count;
-    // end
+    //assign data_out = rd_data;
+    always @(posedge i2c_clk or negedge rst_n) begin
+        if (!rst_n) begin
+            data_out <= 8'd0;
+        end
+        else if(rd_en & i2c_end)
+            data_out <= rd_data;
+        else    
+            data_out <= data_out;
+    end
 
     
 endmodule

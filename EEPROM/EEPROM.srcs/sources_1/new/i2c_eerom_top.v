@@ -26,12 +26,22 @@ module i2c_eerom_top(
     input wire key_wr,
     input wire key_rd,
 
-    output wire [7 : 0] data,
+    output wire [3 : 0] data,
+    //output wire [7 : 0] data,
     inout wire i2c_sda,
     output wire i2c_scl
 );
 
-    wire [3 : 0] data_h;
+
+ila_0 ila_top (
+	.clk(sys_clk), // input wire clk
+
+
+	.probe0(key_wr), // input wire [0:0]  probe0  
+	.probe1(key_rd), // input wire [0:0]  probe1 
+	.probe2(wr_en), // input wire [0:0]  probe2 
+	.probe3(data) // input wire [3:0]  probe3
+);
 
 
     wire read;
@@ -64,7 +74,7 @@ module i2c_eerom_top(
     .button_out()
     );
 
-
+wire [3 : 0] data_h;
 
     i2c_rw_data i2c_rw_data(
     .sys_clk(sys_clk),
@@ -81,7 +91,7 @@ module i2c_eerom_top(
     .wr_data(wr_data),
 
     .rd_en(rd_en),
-    .data_count(data)
+    .data_out({data_h,data})
 );
 
 
@@ -106,49 +116,6 @@ module i2c_eerom_top(
 );
 
 
-//     i2c_rw_data i2c_rw_data(
-//     .sys_clk(sys_clk),
-//     .rst_n(rst_n),
-//     .write(write),
-//     .read(read),
-//     .rd_data(),
-//     .i2c_end(i2c_end),
-//     .i2c_clk(i2c_clk),
-
-//     .i2c_start(i2c_start),
-//     .wr_en(wr_en),
-//     .byte_addr(),
-//     .wr_data(wr_data),
-
-//     .rd_en(rd_en),
-//     .data_count()
-// );
-
-
-
-// wire [3 : 0] state;
-
-//     i2c_ctrl #(50_000_000, 250_000, 7'b1010_000)
-//     i2c_ctrl(
-//     .sys_clk(sys_clk),
-//     .rst_n(rst_n),
-//     .i2c_start(i2c_start),
-//     .wr_en(1'b1),
-//     .byte_addr(16'h01),
-//     .wr_data(8'b0000_0011),
-//     .rd_en(),
-//     .addr_num(1'b0),
-    
-//     .state(state),
-
-//     .i2c_scl(i2c_scl),        //250kHz
-//     .i2c_sda(i2c_sda),
-//     .rd_data(rd_data),
-//     .i2c_end(i2c_end),
-//     .i2c_clk(i2c_clk)          //i2c分频时钟 1MHz
-
-// );
-// assign data = rd_data[3 : 0];
 
 
 

@@ -394,14 +394,14 @@ module i2c_ctrl
 
 
 
-// ila_0 ila (
-// 	.clk(sys_clk), // input wire clk
+ila_0 ila (
+	.clk(sys_clk), // input wire clk
 
 
-// 	.probe0(i2c_scl), // input wire [0:0]  probe0  
-// 	.probe1(i2c_sda), // input wire [0:0]  probe1 
-// 	.probe2(i2c_clk), // input wire [0:0]  probe2 
-// 	.probe3(state) // input wire [0:0]  probe3
-// );
+	.probe0(i2c_scl), // input wire [0:0]  probe0  
+	.probe1(i2c_sda), // input wire [0:0]  probe1 
+	.probe2(i2c_clk), // input wire [0:0]  probe2 
+	.probe3(state) // input wire [3:0]  probe3
+);
 
 endmodule

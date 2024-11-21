@@ -3,6 +3,7 @@ Copyright 1986-1999, 2001-2016 Xilinx, Inc. All Rights Reserved.
 Running: E:/vivado/Vivado/2017.4/bin/unwrapped/win64.o/xelab.exe -wto 90e0d8226df44c3bbed2c3d534d2a538 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot i2c_eerom_tb_behav xil_defaultlib.i2c_eerom_tb xil_defaultlib.glbl -log elaborate.log 
 Using 2 slave threads.
 Starting static elaboration
+WARNING: [VRFC 10-278] actual bit length 8 differs from formal bit length 4 for port data [F:/FPGA/EEPROM/EEPROM.srcs/sim_1/new/i2c_eerom_tb.v:118]
 WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 1 for port A0 [F:/FPGA/EEPROM/EEPROM.srcs/sim_1/new/i2c_eerom_tb.v:126]
 WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 1 for port A1 [F:/FPGA/EEPROM/EEPROM.srcs/sim_1/new/i2c_eerom_tb.v:127]
 WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 1 for port A2 [F:/FPGA/EEPROM/EEPROM.srcs/sim_1/new/i2c_eerom_tb.v:128]
@@ -13,7 +14,7 @@ Completed simulation data flow analysis
 Time Resolution for simulation is 1ps
 Compiling module xil_defaultlib.ax_debounce_default
 Compiling module xil_defaultlib.accross_clock(ACROSS_CLK_FREQ=40...
-Compiling module xil_defaultlib.i2c_rw_data
+Compiling module xil_defaultlib.i2c_rw_data_default
 Compiling module xil_defaultlib.i2c_ctrl(I2C_SCL_FREQ=100000)
 Compiling module xil_defaultlib.i2c_eerom_top
 Compiling module xil_defaultlib.M24LC04B
