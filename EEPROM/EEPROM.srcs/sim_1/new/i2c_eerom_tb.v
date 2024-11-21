@@ -49,7 +49,7 @@ initial begin
     key_wr = 1'b1;
     key_rd = 1'b1;
 
-    #15000000
+    #10000000
     key_wr = 1'b1;
     key_rd = 1'b0;
     
@@ -60,7 +60,7 @@ initial begin
     key_rd = 1'b1;
 
 
-    #15000000
+    #10000000
     key_wr = 1'b0;
     key_rd = 1'b1;
 
@@ -68,7 +68,7 @@ initial begin
     key_wr = 1'b1;
     key_rd = 1'b1;
 
-    #15000000
+    #10000000
     key_wr = 1'b1;
     key_rd = 1'b0;
     
@@ -81,7 +81,7 @@ initial begin
 
 
 
-    #15000000
+    #10000000
     key_wr = 1'b0;
     key_rd = 1'b1;
 
@@ -89,7 +89,7 @@ initial begin
     key_wr = 1'b1;
     key_rd = 1'b1;
 
-    #15000000
+    #10000000
     key_wr = 1'b1;
     key_rd = 1'b0;
     

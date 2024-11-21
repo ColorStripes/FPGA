@@ -37,12 +37,13 @@ module i2c_rw_data(
     output wire [7 : 0] data_count
 );
 
-
-    localparam START_INTERVAL = 5_000;
+    parameter I2C_SCL_FREQ = 400_000;
+    parameter INTERVAL_MS = 5;                      //写间隔毫秒
+    localparam START_INTERVAL = I2C_SCL_FREQ / 1000 * INTERVAL_MS;
 
 
     reg [19 : 0] cnt_start;
-    reg [1 : 0]  cnt_4;
+    //reg [1 : 0]  cnt_4;
 
 
     // always @(posedge i2c_clk or negedge rst_n) begin

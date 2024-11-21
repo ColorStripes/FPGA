@@ -50,8 +50,8 @@ module i2c_ctrl
     localparam CNT_CLK_MAX =  SYS_CLK_FREQ / I2C_SCL_FREQ >> 3;                          //i2c_clk是i2c_scl的4倍关系   再除以2是为了周期计数器在占空比50%下翻转形成索要周期
 
 
-    reg scl_clk;
-    reg cnt_2;             //scl_clk分频计数器
+    //reg scl_clk;
+    //reg cnt_2;             //scl_clk分频计数器
     reg [7 : 0] cnt_clk;   //控制器工作时钟分频计数器
     reg [1 : 0] cnt_scl;   //SCL周期计数器
     reg [2 : 0] cnt_bit;   //发送bit计数
