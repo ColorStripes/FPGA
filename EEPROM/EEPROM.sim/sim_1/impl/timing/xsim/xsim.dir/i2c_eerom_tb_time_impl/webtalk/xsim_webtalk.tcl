@@ -1,6 +1,6 @@
 webtalk_init -webtalk_dir F:/FPGA/EEPROM/EEPROM.sim/sim_1/impl/timing/xsim/xsim.dir/i2c_eerom_tb_time_impl/webtalk/
 webtalk_register_client -client project
-webtalk_add_data -client project -key date_generated -value "Wed Nov 20 12:27:22 2024" -context "software_version_and_target_device"
+webtalk_add_data -client project -key date_generated -value "Fri Nov 22 20:38:14 2024" -context "software_version_and_target_device"
 webtalk_add_data -client project -key product_version -value "XSIM v2017.4 (64-bit)" -context "software_version_and_target_device"
 webtalk_add_data -client project -key build_version -value "2086221" -context "software_version_and_target_device"
 webtalk_add_data -client project -key os_platform -value "WIN64" -context "software_version_and_target_device"
@@ -14,7 +14,7 @@ webtalk_add_data -client project -key target_package -value "not_applicable" -co
 webtalk_add_data -client project -key target_speed -value "not_applicable" -context "software_version_and_target_device"
 webtalk_add_data -client project -key random_id -value "6d85c24f-8eaa-496d-8923-f2cc5bb8f8eb" -context "software_version_and_target_device"
 webtalk_add_data -client project -key project_id -value "90e0d8226df44c3bbed2c3d534d2a538" -context "software_version_and_target_device"
-webtalk_add_data -client project -key project_iteration -value "18" -context "software_version_and_target_device"
+webtalk_add_data -client project -key project_iteration -value "68" -context "software_version_and_target_device"
 webtalk_add_data -client project -key os_name -value "Microsoft Windows 8 or later , 64-bit" -context "user_environment"
 webtalk_add_data -client project -key os_release -value "major release  (build 9200)" -context "user_environment"
 webtalk_add_data -client project -key cpu_name -value "Intel(R) Core(TM) i7-10875H CPU @ 2.30GHz" -context "user_environment"
@@ -24,9 +24,9 @@ webtalk_add_data -client project -key system_ram -value "17.000 GB" -context "us
 webtalk_register_client -client xsim
 webtalk_add_data -client xsim -key Command -value "xsim" -context "xsim\\command_line_options"
 webtalk_add_data -client xsim -key trace_waveform -value "true" -context "xsim\\usage"
-webtalk_add_data -client xsim -key runtime -value "1740454552 ps" -context "xsim\\usage"
+webtalk_add_data -client xsim -key runtime -value "907335038 ps" -context "xsim\\usage"
 webtalk_add_data -client xsim -key iteration -value "2" -context "xsim\\usage"
-webtalk_add_data -client xsim -key Simulation_Time -value "16.41_sec" -context "xsim\\usage"
-webtalk_add_data -client xsim -key Simulation_Memory -value "22036_KB" -context "xsim\\usage"
-webtalk_transmit -clientid 4106176277 -regid "212255611_0_0_203" -xml F:/FPGA/EEPROM/EEPROM.sim/sim_1/impl/timing/xsim/xsim.dir/i2c_eerom_tb_time_impl/webtalk/usage_statistics_ext_xsim.xml -html F:/FPGA/EEPROM/EEPROM.sim/sim_1/impl/timing/xsim/xsim.dir/i2c_eerom_tb_time_impl/webtalk/usage_statistics_ext_xsim.html -wdm F:/FPGA/EEPROM/EEPROM.sim/sim_1/impl/timing/xsim/xsim.dir/i2c_eerom_tb_time_impl/webtalk/usage_statistics_ext_xsim.wdm -intro "<H3>XSIM Usage Report</H3><BR>"
+webtalk_add_data -client xsim -key Simulation_Time -value "1.51_sec" -context "xsim\\usage"
+webtalk_add_data -client xsim -key Simulation_Memory -value "12964_KB" -context "xsim\\usage"
+webtalk_transmit -clientid 2847710085 -regid "212255611_0_0_203" -xml F:/FPGA/EEPROM/EEPROM.sim/sim_1/impl/timing/xsim/xsim.dir/i2c_eerom_tb_time_impl/webtalk/usage_statistics_ext_xsim.xml -html F:/FPGA/EEPROM/EEPROM.sim/sim_1/impl/timing/xsim/xsim.dir/i2c_eerom_tb_time_impl/webtalk/usage_statistics_ext_xsim.html -wdm F:/FPGA/EEPROM/EEPROM.sim/sim_1/impl/timing/xsim/xsim.dir/i2c_eerom_tb_time_impl/webtalk/usage_statistics_ext_xsim.wdm -intro "<H3>XSIM Usage Report</H3><BR>"
 webtalk_terminate

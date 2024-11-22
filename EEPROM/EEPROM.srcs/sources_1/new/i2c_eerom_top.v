@@ -101,13 +101,13 @@ wire [3 : 0] data_h;
 
 
 
-    i2c_ctrl #(50_000_000, 400_000, 7'b1010_000)
+    i2c_ctrl #(50_000_000, 250_000, 7'b1010_000)
     i2c_ctrl(
     .sys_clk(sys_clk),
     .rst_n(rst_n),
     .i2c_start(1),
     .wr_en(0),
-    .byte_addr(0),
+    .byte_addr(16'h00f0),
     .wr_data(),
     .rd_en(1),
     .addr_num(1'b0),          //对于24LC064这个是2字数据地址    对于24LC04B这是1字位数据地址
