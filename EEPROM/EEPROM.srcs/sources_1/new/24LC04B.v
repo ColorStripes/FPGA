@@ -206,9 +206,12 @@ module M24LC04B (A0, A1, A2, WP, SDA, SCL, RESET);
 // -------------------------------------------------------------------------------------------------------
 //      1.02:  STOP Bit Detection
 // -------------------------------------------------------------------------------------------------------
+wire test;
+
 
    always @(posedge SDA) begin
       if (SCL == 1) begin
+
          START_Rcvd <= 0;
          STOP_Rcvd  <= 1;
          CTRL_Rcvd  <= 0;
@@ -414,7 +417,7 @@ module M24LC04B (A0, A1, A2, WP, SDA, SCL, RESET);
 // -------------------------------------------------------------------------------------------------------
 //      1.14:  SDA Data I/O Buffer
 // -------------------------------------------------------------------------------------------------------
-
+bufif1 (test, 1'b0, SDA_DriveEnableDlyd);
    bufif1 (SDA, 1'b0, SDA_DriveEnableDlyd);
    assign SDA_DriveEnable = !SDA_DO & SDA_OE;
    always @(SDA_DriveEnable) SDA_DriveEnableDlyd <= #(tAA) SDA_DriveEnable;

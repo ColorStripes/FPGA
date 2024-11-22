@@ -3,14 +3,44 @@ Copyright 1986-1999, 2001-2016 Xilinx, Inc. All Rights Reserved.
 Running: E:/vivado/Vivado/2017.4/bin/unwrapped/win64.o/xelab.exe -wto 90e0d8226df44c3bbed2c3d534d2a538 --incr --debug typical --relax --mt 2 --maxdelay -L xil_defaultlib -L simprims_ver -L secureip --snapshot i2c_eerom_tb_time_synth -transport_int_delays -pulse_r 0 -pulse_int_r 0 -pulse_e 0 -pulse_int_e 0 xil_defaultlib.i2c_eerom_tb xil_defaultlib.glbl -log elaborate.log 
 Using 2 slave threads.
 Starting static elaboration
+WARNING: [VRFC 10-278] actual bit length 8 differs from formal bit length 4 for port data [F:/FPGA/EEPROM/EEPROM.srcs/sim_1/new/i2c_eerom_tb.v:118]
+WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 1 for port A0 [F:/FPGA/EEPROM/EEPROM.srcs/sim_1/new/i2c_eerom_tb.v:126]
+WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 1 for port A1 [F:/FPGA/EEPROM/EEPROM.srcs/sim_1/new/i2c_eerom_tb.v:127]
+WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 1 for port A2 [F:/FPGA/EEPROM/EEPROM.srcs/sim_1/new/i2c_eerom_tb.v:128]
+WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 1 for port WP [F:/FPGA/EEPROM/EEPROM.srcs/sim_1/new/i2c_eerom_tb.v:129]
 Completed static elaboration
 Starting simulation data flow analysis
 Completed simulation data flow analysis
 INFO: [XSIM 43-3451] SDF backannotation process started with SDF file "i2c_eerom_tb_time_synth.sdf", for root module "i2c_eerom_tb/i2c_eerom_top".
 INFO: [XSIM 43-3452] SDF backannotation was successful for SDF file "i2c_eerom_tb_time_synth.sdf", for root module "i2c_eerom_tb/i2c_eerom_top".
 Time Resolution for simulation is 1ps
+Compiling module simprims_ver.BUFG
+Compiling module simprims_ver.OBUF
+Compiling module simprims_ver.x_lut2_mux4
+Compiling module simprims_ver.LUT2
+Compiling module simprims_ver.LUT4
+Compiling module simprims_ver.FDPE_default
+Compiling module simprims_ver.x_lut3_mux8
+Compiling module simprims_ver.LUT3
+Compiling module simprims_ver.LUT5
+Compiling module simprims_ver.LUT6
+Compiling module simprims_ver.FDCE_default
+Compiling module simprims_ver.x_lut1_mux2
+Compiling module simprims_ver.LUT1
+Compiling module xil_defaultlib.i2c_ctrl
+Compiling module xil_defaultlib.accross_clock
+Compiling module xil_defaultlib.accross_clock_1
+Compiling module simprims_ver.CARRY4
+Compiling module simprims_ver.MUXF7
+Compiling module simprims_ver.MUXF8
+Compiling module xil_defaultlib.i2c_rw_data
+Compiling module simprims_ver.IBUF
 Compiling module simprims_ver.OBUFT
+Compiling module xil_defaultlib.IOBUF_UNIQ_BASE_
+Compiling module xil_defaultlib.ax_debounce
+Compiling module xil_defaultlib.ax_debounce_0
 Compiling module xil_defaultlib.i2c_eerom_top
+Compiling module xil_defaultlib.M24LC04B
 Compiling module xil_defaultlib.i2c_eerom_tb
 Compiling module xil_defaultlib.glbl
 Built simulation snapshot i2c_eerom_tb_time_synth

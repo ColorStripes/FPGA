@@ -49,7 +49,7 @@ initial begin
     key_wr = 1'b1;
     key_rd = 1'b1;
 
-    #10000000
+    #5700000
     key_wr = 1'b1;
     key_rd = 1'b0;
     
@@ -60,44 +60,44 @@ initial begin
     key_rd = 1'b1;
 
 
-    #10000000
-    key_wr = 1'b0;
-    key_rd = 1'b1;
+    // #450000
+    // key_wr = 1'b0;
+    // key_rd = 1'b1;
 
-    #5000
-    key_wr = 1'b1;
-    key_rd = 1'b1;
+    // #5000
+    // key_wr = 1'b1;
+    // key_rd = 1'b1;
 
-    #10000000
-    key_wr = 1'b1;
-    key_rd = 1'b0;
+    // #5700000
+    // key_wr = 1'b1;
+    // key_rd = 1'b0;
     
 
 
-    #5000
-    key_wr = 1'b1;
-    key_rd = 1'b1;
+    // #5000
+    // key_wr = 1'b1;
+    // key_rd = 1'b1;
 
 
 
 
-    #10000000
-    key_wr = 1'b0;
-    key_rd = 1'b1;
+    // #450000
+    // key_wr = 1'b0;
+    // key_rd = 1'b1;
 
-    #5000
-    key_wr = 1'b1;
-    key_rd = 1'b1;
+    // #5000
+    // key_wr = 1'b1;
+    // key_rd = 1'b1;
 
-    #10000000
-    key_wr = 1'b1;
-    key_rd = 1'b0;
+    // #5600000
+    // key_wr = 1'b1;
+    // key_rd = 1'b0;
     
 
 
-    #5000
-    key_wr = 1'b1;
-    key_rd = 1'b1;
+    // #5000
+    // key_wr = 1'b1;
+    // key_rd = 1'b1;
 
 
 

@@ -35,18 +35,19 @@ module i2c_ctrl
     input wire [7 : 0] wr_data,
     input wire rd_en,
     input wire addr_num,
+    input wire page,            //页写标志
 
-    //output reg [3 : 0] state,
 
     output reg i2c_scl,        //250kHz
     inout wire i2c_sda,
     output reg [7 : 0] rd_data,
+    output reg [6 : 0] cnt_B,   //页写字计数 从0开始
     output reg i2c_end,
     output reg i2c_clk          //i2c分频时钟 1MHz
 
 );
 
-
+    //分频整除不了/////////////////////////////////////////////待修改
     localparam CNT_CLK_MAX =  SYS_CLK_FREQ / I2C_SCL_FREQ >> 3;                          //i2c_clk是i2c_scl的4倍关系   再除以2是为了周期计数器在占空比50%下翻转形成索要周期
 
 
@@ -61,7 +62,7 @@ module i2c_ctrl
     reg re_wr_reg;
     reg ack;                //应答判断信号
     wire ack_cnt_2;         //采集cnt_scl为2时候是否有应答
-    wire cnt_en;
+    wire cnt_en;            //传输bit计数器使能
 
     //i2c_clk分频
     always @(posedge sys_clk or negedge rst_n) begin
@@ -189,7 +190,7 @@ module i2c_ctrl
                 end
                 DEV_DA_WRITE_READ:begin
                     if((cnt_bit == 3'd7) && (cnt_scl == 2'd3)) begin
-                        if(wr_en)
+                        if(wr_en | page) 
                             state <= ACK;
                         else
                             state <= N_ACK; 
@@ -237,12 +238,12 @@ module i2c_ctrl
             else
                 cnt_ack <= 2 + ACK - addr_num;
         end
-        else if((state == ACK) && !ack && (cnt_scl == 2'd3)) begin
+        else if((state == ACK) && !ack && (cnt_scl == 2'd3)) 
             cnt_ack <= cnt_ack + 1'b1;
-        end
-        else if((state == DEV_DA_ADDR_L) && re_wr_reg && (cnt_scl == 2'd3)) begin
+        else if((state == DEV_DA_ADDR_L) && re_wr_reg && (cnt_scl == 2'd3)) 
             cnt_ack <= 1;
-        end
+        else if((state == DEV_DA_WRITE_READ) && (cnt_bit == 3'd7) && (cnt_scl == 2'd3)) 
+            cnt_ack <= cnt_ack - page;
         else if(state == IDLE) begin
             cnt_ack <= ACK;
         end
@@ -255,13 +256,30 @@ module i2c_ctrl
     always @(posedge i2c_clk or negedge rst_n) begin
         if(!rst_n)
             re_wr_reg <= 1'b0;
-        else if((state == DEV_ADDR) && (cnt_bit == 3'd7) && rd_en && (cnt_scl == 2'd3))
+        else if((state == DEV_ADDR) && (cnt_bit == 3'd7) && (cnt_scl == 2'd3) && rd_en)
             re_wr_reg <= ~re_wr_reg;
         else if(state == IDLE)
             re_wr_reg <= 1'b0;
         else
             re_wr_reg <= re_wr_reg;
     end
+
+    //传输B计数器
+    always @(posedge i2c_clk or negedge rst_n) begin
+        if(!rst_n) begin
+            cnt_B <= 7'd0;
+        end
+        else if((state == DEV_DA_WRITE_READ) && (cnt_bit == 3'd7) && (cnt_scl == 2'd3)) begin
+            cnt_B <= cnt_B + 1'b1;
+        end
+        else if(state == IDLE)
+            cnt_B <= 7'd0;
+        else begin
+            cnt_B <= cnt_B;
+        end
+    end
+
+    
 
 
     //传输bit计数器
@@ -282,6 +300,7 @@ module i2c_ctrl
 
 
     //i2c_sda状态的赋值  将一个scl周期分为四个 计数器控制0123
+    //assign i2c_sda = ((cnt_bit == 3'd7) && (cnt_scl == 2'd3)) ? 1'bz : sda_out;
     assign i2c_sda = sda_out;
     always @(*) begin
         case(state)
@@ -296,8 +315,19 @@ module i2c_ctrl
                 end
             end
             DEV_ADDR:begin
-                if(cnt_bit <= 3'd6)
-                    sda_out = DEVICE_ADDR[6-cnt_bit];
+
+                //M24LC64
+                // if(cnt_bit <= 3'd6)
+                //     sda_out = DEVICE_ADDR[6-cnt_bit];
+                // /////////////////////////////////////////////////////////
+
+                //M24LC04B              
+                if(cnt_bit <= 3'd3)                                 //
+                    sda_out = DEVICE_ADDR[6-cnt_bit];               //
+                else if((cnt_bit <= 3'd6) && (cnt_bit > 3'd3))      //
+                    sda_out = byte_addr[cnt_bit + 4];               //
+                //////////////////////////////////////////////////////
+
                 else if(wr_en)
                     sda_out = 1'b0;
                 else if(rd_en)
@@ -371,7 +401,7 @@ module i2c_ctrl
         if(!rst_n) begin
             i2c_end <= 1'b0;
         end
-        else if((state == STOP) && (cnt_bit == 3'd2)) begin
+        else if((state == STOP) && (cnt_bit == 3'd2) && (cnt_scl == 2'd2)) begin
             i2c_end <= 1'b1;
         end
         else begin
@@ -394,14 +424,14 @@ module i2c_ctrl
 
 
 
-ila_0 ila (
-	.clk(sys_clk), // input wire clk
+// ila_0 ila (
+// 	.clk(sys_clk), // input wire clk
 
 
-	.probe0(i2c_scl), // input wire [0:0]  probe0  
-	.probe1(i2c_sda), // input wire [0:0]  probe1 
-	.probe2(i2c_clk), // input wire [0:0]  probe2 
-	.probe3(state) // input wire [3:0]  probe3
-);
+// 	.probe0(i2c_scl), // input wire [0:0]  probe0  
+// 	.probe1(i2c_sda), // input wire [0:0]  probe1 
+// 	.probe2(i2c_clk), // input wire [0:0]  probe2 
+// 	.probe3(state) // input wire [3:0]  probe3
+// );
 
 endmodule

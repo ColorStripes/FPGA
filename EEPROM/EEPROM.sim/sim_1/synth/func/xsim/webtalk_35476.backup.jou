@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Webtalk v2017.4 (64-bit)
+# SW Build 2086221 on Fri Dec 15 20:55:39 MST 2017
+# IP Build 2085800 on Fri Dec 15 22:25:07 MST 2017
+# Start of session at: Wed Nov 20 10:58:32 2024
+# Process ID: 35476
+# Current directory: F:/FPGA/EEPROM/EEPROM.sim/sim_1/synth/func/xsim
+# Command line: wbtcv.exe -mode batch -source F:/FPGA/EEPROM/EEPROM.sim/sim_1/synth/func/xsim/xsim.dir/i2c_eerom_tb_func_synth/webtalk/xsim_webtalk.tcl -notrace
+# Log file: F:/FPGA/EEPROM/EEPROM.sim/sim_1/synth/func/xsim/webtalk.log
+# Journal file: F:/FPGA/EEPROM/EEPROM.sim/sim_1/synth/func/xsim\webtalk.jou
+#-----------------------------------------------------------
+source F:/FPGA/EEPROM/EEPROM.sim/sim_1/synth/func/xsim/xsim.dir/i2c_eerom_tb_func_synth/webtalk/xsim_webtalk.tcl -notrace
