@@ -204,7 +204,8 @@ module i2c_ctrl
     end
 
     //ack
-    assign ack_cnt_2 = (state == ACK) ? i2c_sda : 1'b1;
+    assign ack_cnt_2 = (state == ACK) ? 1'b0 : 1'b1;
+    //assign ack_cnt_2 = (state == ACK) ? i2c_sda : 1'b1;
     always @(posedge i2c_clk or negedge rst_n) begin            //延迟一个i2c_clk 保证ACK是一个SCL前提 在i2c_clk == 3的时候应答信号消失后仍有效
         if(!rst_n)
             ack <= 1'b1;
@@ -316,12 +317,15 @@ module i2c_ctrl
                     sda_out = byte_addr[cnt_bit + 4];               //
                 //////////////////////////////////////////////////////
 
-                else if(wr_en)
+                else if(wr_en) begin
                     sda_out = 1'b0;
-                else if(rd_en)
+                end
+                else if(rd_en) begin
                     sda_out = re_wr_reg;
-                else
+                end 
+                else begin
                     sda_out = 1'b1;
+                end   
             end
             ACK:begin
                 sda_out = 1'bz;

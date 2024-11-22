@@ -1,0 +1,4 @@
+Running: xsim.dir/i2c_eerom_tb_time_synth/xsimk.exe -simmode gui -wdb i2c_eerom_tb_time_synth.wdb -simrunnum 0 -socket 58224
+Design successfully loaded
+Design Loading Memory Usage: 8880 KB (Peak: 8880 KB)
+Design Loading CPU Usage: 15 ms

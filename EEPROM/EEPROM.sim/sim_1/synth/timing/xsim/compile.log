@@ -1,12 +1,7 @@
 INFO: [VRFC 10-2263] Analyzing Verilog file "F:/FPGA/EEPROM/EEPROM.sim/sim_1/synth/timing/xsim/i2c_eerom_tb_time_synth.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module IOBUF_UNIQ_BASE_
-INFO: [VRFC 10-311] analyzing module accross_clock
-INFO: [VRFC 10-311] analyzing module accross_clock_1
-INFO: [VRFC 10-311] analyzing module ax_debounce
-INFO: [VRFC 10-311] analyzing module ax_debounce_0
 INFO: [VRFC 10-311] analyzing module i2c_ctrl
 INFO: [VRFC 10-311] analyzing module i2c_eerom_top
-INFO: [VRFC 10-311] analyzing module i2c_rw_data
 INFO: [VRFC 10-311] analyzing module glbl
 INFO: [VRFC 10-2263] Analyzing Verilog file "F:/FPGA/EEPROM/EEPROM.srcs/sources_1/new/24LC04B.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module M24LC04B

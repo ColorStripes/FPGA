@@ -1,8 +1,0 @@
-Vivado Simulator 2017.4
-Time resolution is 1 ps
-WARNING: "F:/FPGA/EEPROM/EEPROM.srcs/sources_1/new/24LC04B.v" Line 510: Timing violation in scope /i2c_eerom_tb/M24LC04B/TChk510_1893 at time 4692629 ps $width (posedge SDA &&& SCL,tBUF) 
-WARNING: "F:/FPGA/EEPROM/EEPROM.srcs/sources_1/new/24LC04B.v" Line 516: Timing violation in scope /i2c_eerom_tb/M24LC04B/TChk516_1897 at time 4692647 ps $hold (negedge SDA &&& TimingCheckEnable,negedge SCL,tHD_STA) 
-WARNING: "F:/FPGA/EEPROM/EEPROM.srcs/sources_1/new/24LC04B.v" Line 508: Timing violation in scope /i2c_eerom_tb/M24LC04B/TChk508_1892 at time 5692163 ps $width (negedge SCL,tLO) 
-WARNING: "F:/FPGA/EEPROM/EEPROM.srcs/sources_1/new/24LC04B.v" Line 508: Timing violation in scope /i2c_eerom_tb/M24LC04B/TChk508_1892 at time 36692163 ps $width (negedge SCL,tLO) 
-WARNING: "F:/FPGA/EEPROM/EEPROM.srcs/sources_1/new/24LC04B.v" Line 508: Timing violation in scope /i2c_eerom_tb/M24LC04B/TChk508_1892 at time 39692647 ps $width (negedge SCL,tLO) 
-WARNING: "F:/FPGA/EEPROM/EEPROM.srcs/sources_1/new/24LC04B.v" Line 513: Timing violation in scope /i2c_eerom_tb/M24LC04B/TChk513_1895 at time 39692647 ps $setup (SDA,posedge SCL &&& TimingCheckEnable,tSU_DAT) 

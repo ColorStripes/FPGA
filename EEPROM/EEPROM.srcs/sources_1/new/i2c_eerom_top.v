@@ -79,7 +79,7 @@ module i2c_eerom_top(
 
 wire [3 : 0] data_h;
 
-    i2c_rw_data#(50_000_000, 2000_000, 5) 
+    i2c_rw_data#(50_000_000, 400_000, 5) 
     i2c_rw_data(
     .sys_clk(sys_clk),
     .rst_n(rst_n),
@@ -101,24 +101,24 @@ wire [3 : 0] data_h;
 
 
 
-    i2c_ctrl #(50_000_000, 250_000, 7'b1010_000)
+    i2c_ctrl #(50_000_000, 100_000, 7'b1010_000)
     i2c_ctrl(
     .sys_clk(sys_clk),
     .rst_n(rst_n),
-    .i2c_start(1),
-    .wr_en(0),
-    .byte_addr(16'h00f0),
-    .wr_data(),
-    .rd_en(1),
+    .i2c_start(i2c_start),
+    .wr_en(wr_en),
+    .byte_addr(byte_addr),
+    .wr_data(wr_data),
+    .rd_en(rd_en),
     .addr_num(1'b0),          //对于24LC064这个是2字数据地址    对于24LC04B这是1字位数据地址
-    .page(1'b0),
+    .page(page),
     
     .i2c_scl(i2c_scl),        //100kHz
     .i2c_sda(i2c_sda),
-    .rd_data(),
-    .cnt_B(),
-    .i2c_end(),
-    .i2c_clk()          //i2c分频时钟 1MHz
+    .rd_data(rd_data),
+    .cnt_B(cnt_B),
+    .i2c_end(i2c_end),
+    .i2c_clk(i2c_clk)          //i2c分频时钟 1MHz
 
 );
 
