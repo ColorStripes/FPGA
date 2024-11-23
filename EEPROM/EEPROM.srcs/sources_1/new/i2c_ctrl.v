@@ -56,7 +56,7 @@ module i2c_ctrl
     reg [7 : 0] cnt_clk;   //控制器工作时钟分频计数器
     reg [1 : 0] cnt_scl;   //SCL周期计数器
     reg [2 : 0] cnt_bit;   //发送bit计数
-    reg [2 : 0] cnt_ack;   //进入ACK响应的次数
+    reg [2 : 0] ack_next;   //ack后的跳转位置
     reg [3 : 0] state;     //状态机的个数
     reg sda_out;
     reg re_wr_reg;
@@ -100,6 +100,8 @@ module i2c_ctrl
             cnt_scl <= 2'b00;
         else if((cnt_bit == 3'd7) && (cnt_scl == 2'd2))
             cnt_scl <= 2'b00;
+        // else if( ((state == ACK) || (state == N_ACK)) && (cnt_scl == 2'd0))
+        //     cnt_scl <= 2'b00;
         else begin
             cnt_scl <= cnt_scl + 1'b1;
         end
@@ -148,8 +150,7 @@ module i2c_ctrl
                 end
                 ACK:begin
                     if(!ack && (cnt_scl == 2'd3)) begin
-                        //state <= ACK + cnt_ack;
-                        state <= cnt_ack;
+                        state <= ack_next;
                     end
                     else begin
                         state <= state;
@@ -173,7 +174,7 @@ module i2c_ctrl
                 end
                 DEV_DA_WRITE_READ:begin
                     if((cnt_bit == 3'd7) && (cnt_scl == 2'd2)) begin
-                        if(wr_en | page) 
+                        if(wr_en) 
                             state <= ACK;
                         else
                             state <= N_ACK; 
@@ -192,7 +193,7 @@ module i2c_ctrl
                 end
                 N_ACK:begin
                     if (cnt_scl == 2'd3)
-                        state <= STOP;  
+                        state <= STOP - page;  
                     else begin
                         state <= state;
                     end
@@ -204,8 +205,8 @@ module i2c_ctrl
     end
 
     //ack
-    assign ack_cnt_2 = (state == ACK) ? 1'b0 : 1'b1;
-    //assign ack_cnt_2 = (state == ACK) ? i2c_sda : 1'b1;
+    //assign ack_cnt_2 = (state == ACK) ? 1'b0 : 1'b1;
+    assign ack_cnt_2 = (state == ACK) ? i2c_sda : 1'b1;
     always @(posedge i2c_clk or negedge rst_n) begin            //延迟一个i2c_clk 保证ACK是一个SCL前提 在i2c_clk == 3的时候应答信号消失后仍有效
         if(!rst_n)
             ack <= 1'b1;
@@ -213,29 +214,32 @@ module i2c_ctrl
             ack <= ack_cnt_2;
     end
 
-    //assign ack = (state == ACK) ? i2c_sda : 1'b1;
 
-    //进入ack的计数器
+    //ack下一个跳转状态
     always @(posedge i2c_clk or negedge rst_n) begin
         if(!rst_n) begin
-            cnt_ack <= 3'd0;
+            ack_next <= 3'd0;
         end
         else if((state == DEV_ADDR) && (cnt_bit == 3'd7) && (cnt_scl == 2'd2)) begin
             if(re_wr_reg)
-                cnt_ack <= DEV_DA_WRITE_READ;
+                ack_next <= DEV_DA_WRITE_READ;
             else
-                cnt_ack <= 2 + ACK - addr_num;
+                ack_next <= ACK + 2 - addr_num;
         end
         else if((state == ACK) && !ack && (cnt_scl == 2'd3)) 
-            cnt_ack <= cnt_ack + 1'b1;
-        else if((state == DEV_DA_ADDR_L) && re_wr_reg && (cnt_scl == 2'd3)) 
-            cnt_ack <= 3'd1;
+            ack_next <= ack_next + 1'b1;
+        else if((state == DEV_DA_ADDR_L) && re_wr_reg && (cnt_scl == 2'd2)) 
+            ack_next <= START;
         else if((state == DEV_DA_WRITE_READ) && (cnt_bit == 3'd7) && (cnt_scl == 2'd2)) 
-            cnt_ack <= cnt_ack - page;
+            ack_next <= ack_next - page;
         else begin
-            cnt_ack <= cnt_ack;
+            ack_next <= ack_next;
         end
     end
+
+
+
+
 
     //设备地址最后一位 读取或写入状态
     always @(posedge i2c_clk or negedge rst_n) begin
@@ -254,7 +258,7 @@ module i2c_ctrl
         if(!rst_n) begin
             cnt_B <= 7'd0;
         end
-        else if((state == DEV_DA_WRITE_READ) && (cnt_bit == 3'd7) && (cnt_scl == 2'd2)) begin
+        else if((state == DEV_DA_WRITE_READ) && (cnt_bit == 3'd7) && (cnt_scl == 2'd1)) begin
             cnt_B <= cnt_B + 1'b1;
         end
         else if(state == IDLE)
@@ -296,7 +300,7 @@ module i2c_ctrl
                 sda_out = 1'b1;
             end   
             START:begin
-                if((cnt_scl == 2'd1) || (cnt_scl == 2'd0)) begin
+                if(cnt_scl < 2'd3)  begin
                     sda_out = 1'b1;
                 end
                 else begin
@@ -343,7 +347,7 @@ module i2c_ctrl
                     sda_out = 1'bz;
             end
             N_ACK:begin
-                sda_out = 1'b1;
+                sda_out = ~page;
             end
             STOP:begin
                 if((cnt_scl <= 2'd2) && (cnt_bit == 3'b0)) begin
@@ -359,6 +363,7 @@ module i2c_ctrl
         endcase
     end
 
+
     //i2c_scl
     always @(*) begin
 
@@ -367,11 +372,11 @@ module i2c_ctrl
                 i2c_scl = 1'b1;
             end
             START:begin
-                if((cnt_scl == 2'd0) && (cnt_scl == 2'd3)) begin
-                    i2c_scl = 1'b0;
+                if(cnt_scl != 2'd0) begin
+                    i2c_scl = 1'b1;
                 end
                 else begin
-                    i2c_scl = 1'b1;
+                    i2c_scl = 1'b0;
                 end
             end
             DEV_ADDR, ACK, DEV_DA_ADDR_H, DEV_DA_ADDR_L, DEV_DA_WRITE_READ, N_ACK:begin       

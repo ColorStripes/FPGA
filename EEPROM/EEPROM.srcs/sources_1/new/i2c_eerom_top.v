@@ -86,7 +86,7 @@ wire [3 : 0] data_h;
     .write_ac(write),
     .read_ac(read),
     .rd_data(rd_data),
-    .i2c_end(0),
+    .i2c_end(i2c_end),
     .i2c_clk(i2c_clk),
     .cnt_B(cnt_B),
 

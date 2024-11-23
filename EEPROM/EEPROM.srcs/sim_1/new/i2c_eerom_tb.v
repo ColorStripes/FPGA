@@ -42,22 +42,22 @@ initial begin
     rst_n = 1'b1;
 
     #1000
-    key_wr = 1'b1;
-    key_rd = 1'b0;
+    key_wr = 1'b0;
+    key_rd = 1'b1;
 
     #5000
     key_wr = 1'b1;
     key_rd = 1'b1;
 
-    #5700000
-    key_wr = 1'b1;
-    key_rd = 1'b0;
+    // #5700000
+    // key_wr = 1'b1;
+    // key_rd = 1'b0;
     
 
 
-    #5000
-    key_wr = 1'b1;
-    key_rd = 1'b1;
+    // #5000
+    // key_wr = 1'b1;
+    // key_rd = 1'b1;
 
 
     // #450000

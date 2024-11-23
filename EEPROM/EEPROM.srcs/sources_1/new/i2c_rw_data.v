@@ -48,7 +48,7 @@ module i2c_rw_data#(
     wire read, write;
     reg [19 : 0] cnt_start;
     
-    reg [6 : 0] page_B = 7'd1;
+    reg [6 : 0] page_B = 7'd2;   //2字
     assign page = (page_B == cnt_B) ? 1'b0 : 1'b1;
 
     //跨时钟域读写信号
