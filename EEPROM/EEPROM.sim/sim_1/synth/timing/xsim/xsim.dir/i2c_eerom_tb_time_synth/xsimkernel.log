@@ -2,3 +2,6 @@ Running: xsim.dir/i2c_eerom_tb_time_synth/xsimk.exe -simmode gui -wdb i2c_eerom_
 Design successfully loaded
 Design Loading Memory Usage: 8880 KB (Peak: 8880 KB)
 Design Loading CPU Usage: 15 ms
+Simulation completed
+Simulation Memory Usage: 10128 KB (Peak: 10128 KB)
+Simulation CPU Usage: 30 ms

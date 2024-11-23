@@ -49,15 +49,15 @@ initial begin
     key_wr = 1'b1;
     key_rd = 1'b1;
 
-    // #5700000
-    // key_wr = 1'b1;
-    // key_rd = 1'b0;
+    #6000000
+    key_wr = 1'b1;
+    key_rd = 1'b0;
     
 
 
-    // #5000
-    // key_wr = 1'b1;
-    // key_rd = 1'b1;
+    #5000
+    key_wr = 1'b1;
+    key_rd = 1'b1;
 
 
     // #450000

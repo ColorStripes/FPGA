@@ -1,7 +1,7 @@
 Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2017.4 (win64) Build 2086221 Fri Dec 15 20:55:39 MST 2017
-| Date             : Fri Nov 22 21:57:52 2024
+| Date             : Sat Nov 23 23:19:42 2024
 | Host             : LAPTOP-8FN33LQG running 64-bit major release  (build 9200)
 | Command          : report_power -file i2c_eerom_top_power_routed.rpt -pb i2c_eerom_top_power_summary_routed.pb -rpx i2c_eerom_top_power_routed.rpx
 | Design           : i2c_eerom_top
@@ -29,20 +29,20 @@ Table of Contents
 1. Summary
 ----------
 
-+--------------------------+--------------+
-| Total On-Chip Power (W)  | 4.072        |
-| Design Power Budget (W)  | Unspecified* |
-| Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 3.833        |
-| Device Static (W)        | 0.239        |
-| Effective TJA (C/W)      | 11.5         |
-| Max Ambient (C)          | 38.0         |
-| Junction Temperature (C) | 72.0         |
-| Confidence Level         | Low          |
-| Setting File             | ---          |
-| Simulation Activity File | ---          |
-| Design Nets Matched      | NA           |
-+--------------------------+--------------+
++--------------------------+---------------------------------+
+| Total On-Chip Power (W)  | 6.189 (Junction temp exceeded!) |
+| Design Power Budget (W)  | Unspecified*                    |
+| Power Budget Margin (W)  | NA                              |
+| Dynamic (W)              | 5.738                           |
+| Device Static (W)        | 0.451                           |
+| Effective TJA (C/W)      | 11.5                            |
+| Max Ambient (C)          | 13.6                            |
+| Junction Temperature (C) | 96.4                            |
+| Confidence Level         | Low                             |
+| Setting File             | ---                             |
+| Simulation Activity File | ---                             |
+| Design Nets Matched      | NA                              |
++--------------------------+---------------------------------+
 * Specify Design Power Budget using, set_operating_conditions -design_power_budget <value in Watts>
 
 
@@ -52,15 +52,17 @@ Table of Contents
 +----------------+-----------+----------+-----------+-----------------+
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
-| Slice Logic    |     0.380 |       98 |       --- |             --- |
-|   LUT as Logic |     0.364 |       57 |     53200 |            0.11 |
-|   Register     |     0.010 |       23 |    106400 |            0.02 |
-|   BUFG         |     0.006 |        1 |        32 |            3.13 |
-|   Others       |     0.000 |        2 |       --- |             --- |
-| Signals        |     0.292 |       77 |       --- |             --- |
-| I/O            |     3.160 |        8 |       125 |            6.40 |
-| Static Power   |     0.239 |          |           |                 |
-| Total          |     4.072 |          |           |                 |
+| Slice Logic    |     0.826 |      461 |       --- |             --- |
+|   LUT as Logic |     0.774 |      187 |     53200 |            0.35 |
+|   Register     |     0.027 |      169 |    106400 |            0.16 |
+|   CARRY4       |     0.017 |       20 |     13300 |            0.15 |
+|   BUFG         |     0.006 |        2 |        32 |            6.25 |
+|   F7/F8 Muxes  |     0.002 |        4 |     53200 |           <0.01 |
+|   Others       |     0.000 |        9 |       --- |             --- |
+| Signals        |     0.563 |      369 |       --- |             --- |
+| I/O            |     4.349 |       10 |       125 |            8.00 |
+| Static Power   |     0.451 |          |           |                 |
+| Total          |     6.189 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -70,20 +72,20 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.729 |       0.684 |      0.046 |
-| Vccaux    |       1.800 |     0.144 |       0.115 |      0.028 |
-| Vcco33    |       3.300 |     0.892 |       0.891 |      0.001 |
+| Vccint    |       1.000 |     1.527 |       1.412 |      0.115 |
+| Vccaux    |       1.800 |     0.208 |       0.159 |      0.050 |
+| Vcco33    |       3.300 |     1.225 |       1.224 |      0.001 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |
 | Vcco135   |       1.350 |     0.000 |       0.000 |      0.000 |
 | Vcco12    |       1.200 |     0.000 |       0.000 |      0.000 |
 | Vccaux_io |       1.800 |     0.000 |       0.000 |      0.000 |
-| Vccbram   |       1.000 |     0.003 |       0.000 |      0.003 |
+| Vccbram   |       1.000 |     0.009 |       0.000 |      0.009 |
 | MGTAVcc   |       1.000 |     0.000 |       0.000 |      0.000 |
 | MGTAVtt   |       1.200 |     0.000 |       0.000 |      0.000 |
 | MGTVccaux |       1.800 |     0.000 |       0.000 |      0.000 |
-| Vccpint   |       1.000 |     0.077 |       0.000 |      0.077 |
+| Vccpint   |       1.000 |     0.174 |       0.000 |      0.174 |
 | Vccpaux   |       1.800 |     0.010 |       0.000 |      0.010 |
 | Vccpll    |       1.800 |     0.003 |       0.000 |      0.003 |
 | Vcco_ddr  |       1.500 |     0.000 |       0.000 |      0.000 |
@@ -141,12 +143,17 @@ Table of Contents
 3.1 By Hierarchy
 ----------------
 
-+----------------------+-----------+
-| Name                 | Power (W) |
-+----------------------+-----------+
-| i2c_eerom_top        |     3.833 |
-|   i2c_ctrl           |     0.654 |
-|   i2c_sda_IOBUF_inst |     1.386 |
-+----------------------+-----------+
++-------------------------+-----------+
+| Name                    | Power (W) |
++-------------------------+-----------+
+| i2c_eerom_top           |     5.738 |
+|   i2c_ctrl              |     0.740 |
+|   i2c_rw_data           |     0.361 |
+|     accross_clock_read  |     0.080 |
+|     accross_clock_write |     0.106 |
+|   i2c_sda_IOBUF_inst    |     1.972 |
+|   read_key              |     0.130 |
+|   write_key             |     0.121 |
++-------------------------+-----------+
 
 
