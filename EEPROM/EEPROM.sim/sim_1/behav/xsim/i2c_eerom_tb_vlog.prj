@@ -1,5 +1,6 @@
 # compile verilog/system verilog design source files
 verilog xil_defaultlib  \
+"../../../../EEPROM.srcs/sources_1/ip/ila_0_1/sim/ila_0.v" \
 "../../../../EEPROM.srcs/sources_1/new/24LC04B.v" \
 "../../../../EEPROM.srcs/sources_1/new/accross_clock.v" \
 "../../../../EEPROM.srcs/sources_1/new/ax_debounce.v" \

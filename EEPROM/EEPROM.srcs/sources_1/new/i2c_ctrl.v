@@ -60,7 +60,7 @@ module i2c_ctrl
     reg [3 : 0] state;     //状态机的个数
     reg sda_out;
     reg re_wr_reg;
-    reg ack;                //应答判断信号
+    wire ack;                //应答判断信号
     wire ack_cnt_2;         //采集cnt_scl为2时候是否有应答
     wire cnt_en;            //传输bit计数器使能
 
@@ -205,15 +205,15 @@ module i2c_ctrl
     end
 
     //ack
-    //assign ack_cnt_2 = (state == ACK) ? 1'b0 : 1'b1;
-    assign ack_cnt_2 = (state == ACK) ? i2c_sda : 1'b1;
-    always @(posedge i2c_clk or negedge rst_n) begin            //延迟一个i2c_clk 保证ACK是一个SCL前提 在i2c_clk == 3的时候应答信号消失后仍有效
-        if(!rst_n)
-            ack <= 1'b1;
-        else
-            ack <= ack_cnt_2;
-    end
-
+    //assign ack_cnt_2 = (state == ACK) ? 1'b0 : 1'b1;       //test
+    // assign ack_cnt_2 = (state == ACK) ? i2c_sda : 1'b1;
+    // always @(posedge i2c_clk or negedge rst_n) begin            //延迟一个i2c_clk 保证ACK是一个SCL前提 在i2c_clk == 3的时候应答信号消失后仍有效
+    //     if(!rst_n)
+    //         ack <= 1'b1;
+    //     else
+    //         ack <= ack_cnt_2;
+    // end
+    assign ack = (state == ACK) ? i2c_sda : 1'b1;
 
     //ack下一个跳转状态
     always @(posedge i2c_clk or negedge rst_n) begin
@@ -292,8 +292,7 @@ module i2c_ctrl
 
 
     //i2c_sda状态的赋值  将一个scl周期分为四个 计数器控制0123
-    assign i2c_sda = ((cnt_bit == 3'd7) && (cnt_scl == 2'd3)) ? 1'bz : sda_out;
-    //assign i2c_sda = sda_out;
+    assign i2c_sda = sda_out;
     always @(*) begin
         case(state)
             IDLE:begin
@@ -308,7 +307,6 @@ module i2c_ctrl
                 end
             end
             DEV_ADDR:begin
-
                 //M24LC64
                 // if(cnt_bit <= 3'd6)
                 //     sda_out = DEVICE_ADDR[6-cnt_bit];
@@ -332,10 +330,10 @@ module i2c_ctrl
                 end   
             end
             ACK:begin
-                if(cnt_scl < 2'd3)
+                //if(cnt_scl < 2'd3)
                     sda_out = 1'bz;
-                else
-                    sda_out = 1'b0;
+                // else
+                //     sda_out = 1'b0;
             end
             DEV_DA_ADDR_H:begin
                 sda_out = byte_addr[15 - cnt_bit];
@@ -348,12 +346,12 @@ module i2c_ctrl
                     sda_out = wr_data[7 - cnt_bit];
                 else
                     sda_out = 1'bz;
-            end
+                end
             N_ACK:begin
                 sda_out = ~page;
             end
             STOP:begin
-                if((cnt_scl <= 2'd2) && (cnt_bit == 3'b0)) begin
+                if( ( (cnt_bit == 3'd0) && (cnt_scl <= 2'd2) )  ) begin
                     sda_out = 1'b0;
                 end
                 else begin
@@ -366,14 +364,17 @@ module i2c_ctrl
         endcase
     end
 
-    assign i2c_scl = ((state == START) && (cnt_scl == 2'd0)) ? 1'b0 :
-                    ((cnt_scl == 2'd0) || (cnt_scl == 2'd3)) ? ((state == DEV_ADDR) ? 1'b0 :
+    assign i2c_scl = ((state == START) && (cnt_scl == 2'd0)) ? 1'b0 : 
+                     ((state == STOP) && (cnt_bit == 3'd0) && (cnt_scl <= 2'd1)) ? 1'b0 :
+                     ((cnt_scl == 2'd0) || (cnt_scl == 2'd1)) ? ((state == DEV_ADDR) ? 1'b0 :
                                                                 (state == ACK) ? 1'b0 :
                                                                 (state == DEV_DA_ADDR_H) ? 1'b0 :
                                                                 (state == DEV_DA_ADDR_L) ? 1'b0 :
                                                                 (state == DEV_DA_WRITE_READ) ? 1'b0 :
-                                                                (state == N_ACK) ? 1'b0 : 1'b1 ) :
-                    ((cnt_scl == 2'd0) && (cnt_bit == 3'd3)) ? ((state == STOP) ? 1'b0 : 1'b1 ) : 1'b1;
+                                                                (state == N_ACK) ? 1'b0 : 1'b1 ) : 1'b1;
+                                                                //( ? 1'b0 : 1'b1) ;
+                                                                
+                   //(  ? 1'b0 : 1'b1 ) : 
     // //i2c_scl
     // always @(*) begin
 
@@ -440,14 +441,14 @@ module i2c_ctrl
 
 
 
-// ila_0 ila (
-// 	.clk(sys_clk), // input wire clk
+ila_0 ila (
+	.clk(sys_clk), // input wire clk
 
 
-// 	.probe0(i2c_scl), // input wire [0:0]  probe0  
-// 	.probe1(i2c_sda), // input wire [0:0]  probe1 
-// 	.probe2(i2c_clk), // input wire [0:0]  probe2 
-// 	.probe3(state) // input wire [3:0]  probe3
-// );
+	.probe0(i2c_scl), // input wire [0:0]  probe0  
+	.probe1(i2c_sda), // input wire [0:0]  probe1 
+	.probe2(i2c_clk), // input wire [0:0]  probe2 
+	.probe3(state) // input wire [3:0]  probe3
+);
 
 endmodule

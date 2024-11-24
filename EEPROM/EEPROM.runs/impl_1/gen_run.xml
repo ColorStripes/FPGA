@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7z020clg400-2" LaunchTime="1732375089">
+<GenRun Id="impl_1" LaunchPart="xc7z020clg400-2" LaunchTime="1732446634">
   <File Type="PWROPT-DCP" Name="i2c_eerom_top_pwropt.dcp"/>
   <File Type="ROUTE-PWR" Name="i2c_eerom_top_power_routed.rpt"/>
   <File Type="PA-TCL" Name="i2c_eerom_top.tcl"/>
@@ -139,4 +139,5 @@
     <Step Id="post_route_phys_opt_design"/>
     <Step Id="write_bitstream"/>
   </Strategy>
+  <BlockFileSet Type="BlockSrcs" Name="ila_0"/>
 </GenRun>
