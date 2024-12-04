@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2017.4 (64-bit)
+# SW Build 2086221 on Fri Dec 15 20:55:39 MST 2017
+# IP Build 2085800 on Fri Dec 15 22:25:07 MST 2017
+# Start of session at: Wed Dec  4 22:18:48 2024
+# Process ID: 13368
+# Current directory: F:/FPGA/RS485/RS485.runs/rx_fifo_synth_1
+# Command line: vivado.exe -log rx_fifo.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source rx_fifo.tcl
+# Log file: F:/FPGA/RS485/RS485.runs/rx_fifo_synth_1/rx_fifo.vds
+# Journal file: F:/FPGA/RS485/RS485.runs/rx_fifo_synth_1\vivado.jou
+#-----------------------------------------------------------
+source rx_fifo.tcl -notrace

@@ -1,0 +1,12 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../uart_rx.v" \
+"../../../uart_test.v" \
+"../../../uart_tx.v" \
+"../../../vtf_uart_test.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

@@ -1,0 +1,9 @@
+0.6
+2017.4
+Dec 15 2017
+21:07:18
+F:/FPGA/RS232/RS232.sim/sim_1/behav/xsim/glbl.v,1513215259,verilog,,,,glbl,,,,,,,,
+F:/FPGA/RS232/RS232.sim/uart_rx.v,1733140114,verilog,,F:/FPGA/RS232/RS232.sim/uart_test.v,,uart_rx,,,,,,,,
+F:/FPGA/RS232/RS232.sim/uart_test.v,1733141922,verilog,,F:/FPGA/RS232/RS232.sim/uart_tx.v,,uart_test,,,,,,,,
+F:/FPGA/RS232/RS232.sim/uart_tx.v,1733135312,verilog,,F:/FPGA/RS232/RS232.sim/vtf_uart_test.v,,uart_tx,,,,,,,,
+F:/FPGA/RS232/RS232.sim/vtf_uart_test.v,1572833917,verilog,,,,vtf_uart_test,,,,,,,,

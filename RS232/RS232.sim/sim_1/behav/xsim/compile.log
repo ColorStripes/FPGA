@@ -1,0 +1,8 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "F:/FPGA/RS232/RS232.sim/uart_rx.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module uart_rx
+INFO: [VRFC 10-2263] Analyzing Verilog file "F:/FPGA/RS232/RS232.sim/uart_test.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module uart_test
+INFO: [VRFC 10-2263] Analyzing Verilog file "F:/FPGA/RS232/RS232.sim/uart_tx.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module uart_tx
+INFO: [VRFC 10-2263] Analyzing Verilog file "F:/FPGA/RS232/RS232.sim/vtf_uart_test.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module vtf_uart_test

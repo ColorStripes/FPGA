@@ -2,8 +2,10 @@
 *.wdb
 *.btree
 *.wcfg
+*.vsdx
+*.zip
 # 排除所有.开头的隐藏文件:
 .*
 
 #不忽略
-!.gitignore
+!.gitignoregit

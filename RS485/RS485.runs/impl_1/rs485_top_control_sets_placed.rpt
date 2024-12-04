@@ -1,0 +1,102 @@
+Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2017.4 (win64) Build 2086221 Fri Dec 15 20:55:39 MST 2017
+| Date         : Wed Dec  4 23:05:36 2024
+| Host         : LAPTOP-8FN33LQG running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file rs485_top_control_sets_placed.rpt
+| Design       : rs485_top
+| Device       : xc7z020
+--------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Flip-Flop Distribution
+3. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Number of unique control sets                            |    39 |
+| Unused register locations in slices containing registers |   158 |
++----------------------------------------------------------+-------+
+
+
+2. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |               0 |            0 |
+| No           | No                    | Yes                    |             110 |           52 |
+| No           | Yes                   | No                     |               8 |            3 |
+| Yes          | No                    | No                     |               0 |            0 |
+| Yes          | No                    | Yes                    |             148 |           54 |
+| Yes          | Yes                   | No                     |              64 |           15 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+3. Detailed Control Set Information
+-----------------------------------
+
++--------------------+-------------------------------------------------------------------------------------------------+----------------------------------------+------------------+----------------+
+|    Clock Signal    |                                          Enable Signal                                          |            Set/Reset Signal            | Slice Load Count | Bel Load Count |
++--------------------+-------------------------------------------------------------------------------------------------+----------------------------------------+------------------+----------------+
+|  sys_clk_IBUF_BUFG | rs485_m1/uart_rx_inst/rx_bits[6]_i_1__0_n_0                                                     | rs485_m1/uart_rx_inst/rx_bits_reg[7]_0 |                1 |              1 |
+|  sys_clk_IBUF_BUFG | rs485_m0/uart_rx_inst/rx_bits[4]_i_1_n_0                                                        | rs485_m0/uart_rx_inst/rx_bits_reg[7]_0 |                1 |              1 |
+|  sys_clk_IBUF_BUFG | rs485_m0/uart_rx_inst/rx_bits[2]_i_1_n_0                                                        | rs485_m0/uart_rx_inst/rx_bits_reg[7]_0 |                1 |              1 |
+|  sys_clk_IBUF_BUFG | rs485_m0/uart_rx_inst/rx_bits[7]_i_1_n_0                                                        | rs485_m0/uart_rx_inst/rx_bits_reg[7]_0 |                1 |              1 |
+|  sys_clk_IBUF_BUFG | rs485_m0/uart_rx_inst/rx_bits[5]_i_1_n_0                                                        | rs485_m0/uart_rx_inst/rx_bits_reg[7]_0 |                1 |              1 |
+|  sys_clk_IBUF_BUFG | rs485_m0/uart_rx_inst/rx_bits[3]_i_1_n_0                                                        | rs485_m0/uart_rx_inst/rx_bits_reg[7]_0 |                1 |              1 |
+|  sys_clk_IBUF_BUFG | rs485_m0/uart_rx_inst/rx_bits[0]_i_1_n_0                                                        | rs485_m0/uart_rx_inst/rx_bits_reg[7]_0 |                1 |              1 |
+|  sys_clk_IBUF_BUFG | rs485_m0/uart_rx_inst/rs485_de_reg                                                              | rs485_m0/uart_tx_inst/tx_reg_reg_0     |                1 |              1 |
+|  sys_clk_IBUF_BUFG | rs485_m0/uart_rx_inst/rx_bits[1]_i_1_n_0                                                        | rs485_m0/uart_rx_inst/rx_bits_reg[7]_0 |                1 |              1 |
+|  sys_clk_IBUF_BUFG | rs485_m0/uart_rx_inst/rx_bits[6]_i_1_n_0                                                        | rs485_m0/uart_rx_inst/rx_bits_reg[7]_0 |                1 |              1 |
+|  sys_clk_IBUF_BUFG | rs485_m1/uart_rx_inst/rx_bits[2]_i_1__0_n_0                                                     | rs485_m1/uart_rx_inst/rx_bits_reg[7]_0 |                1 |              1 |
+|  sys_clk_IBUF_BUFG | rs485_m1/uart_rx_inst/rx_bits[4]_i_1__0_n_0                                                     | rs485_m1/uart_rx_inst/rx_bits_reg[7]_0 |                1 |              1 |
+|  sys_clk_IBUF_BUFG | rs485_m1/uart_rx_inst/rs485_de_reg                                                              | rs485_m0/uart_tx_inst/tx_reg_reg_0     |                1 |              1 |
+|  sys_clk_IBUF_BUFG | rs485_m1/uart_rx_inst/rx_bits[0]_i_1__0_n_0                                                     | rs485_m1/uart_rx_inst/rx_bits_reg[7]_0 |                1 |              1 |
+|  sys_clk_IBUF_BUFG | rs485_m1/uart_rx_inst/rx_bits[5]_i_1__0_n_0                                                     | rs485_m1/uart_rx_inst/rx_bits_reg[7]_0 |                1 |              1 |
+|  sys_clk_IBUF_BUFG | rs485_m1/uart_rx_inst/rx_bits[1]_i_1__0_n_0                                                     | rs485_m1/uart_rx_inst/rx_bits_reg[7]_0 |                1 |              1 |
+|  sys_clk_IBUF_BUFG | rs485_m1/uart_rx_inst/rx_bits[3]_i_1__0_n_0                                                     | rs485_m1/uart_rx_inst/rx_bits_reg[7]_0 |                1 |              1 |
+|  sys_clk_IBUF_BUFG | rs485_m1/uart_rx_inst/rx_bits[7]_i_1__0_n_0                                                     | rs485_m1/uart_rx_inst/rx_bits_reg[7]_0 |                1 |              1 |
+|  sys_clk_IBUF_BUFG |                                                                                                 | rs485_m0/uart_tx_inst/tx_reg_reg_0     |                2 |              2 |
+|  sys_clk_IBUF_BUFG | rs485_m0/fifo_wdata                                                                             | rs485_m0/uart_rx_inst/rx_bits_reg[7]_0 |                1 |              8 |
+|  sys_clk_IBUF_BUFG | rs485_m0/uart_tx_inst/E[0]                                                                      | rs485_m0/uart_rx_inst/rx_bits_reg[7]_0 |                4 |              8 |
+|  sys_clk_IBUF_BUFG | rs485_m0/uart_tx_inst/tx_data_latch[7]_i_1_n_0                                                  | rs485_m0/uart_rx_inst/rx_bits_reg[7]_0 |                1 |              8 |
+|  sys_clk_IBUF_BUFG | rs485_m0/uart_rx_inst/E[0]                                                                      | rs485_m0/uart_rx_inst/rx_bits_reg[7]_0 |                3 |              8 |
+|  sys_clk_IBUF_BUFG | rs485_m0/uart_rx_inst/rx_data_valid01_out                                                       | rs485_m0/uart_rx_inst/rx_bits_reg[7]_0 |                3 |              8 |
+|  sys_clk_IBUF_BUFG | rs485_m0/uart_rx_inst/data_count_reg[0][0]                                                      | rs485_m0/uart_rx_inst/rx_bits_reg[7]_0 |                2 |              8 |
+|  sys_clk_IBUF_BUFG | rs485_m1/uart_rx_inst/E[0]                                                                      | rs485_m1/uart_rx_inst/rx_bits_reg[7]_0 |                3 |              8 |
+|  sys_clk_IBUF_BUFG | rs485_m1/uart_rx_inst/rx_data_valid01_out                                                       | rs485_m1/uart_rx_inst/rx_bits_reg[7]_0 |                1 |              8 |
+|  sys_clk_IBUF_BUFG | rs485_m1/uart_rx_inst/data_count_reg[0][0]                                                      | rs485_m1/uart_rx_inst/rx_bits_reg[7]_0 |                2 |              8 |
+|  sys_clk_IBUF_BUFG | rs485_m1/uart_tx_inst/tx_data_latch[7]_i_1__0_n_0                                               | rs485_m1/uart_rx_inst/rx_bits_reg[7]_0 |                2 |              8 |
+|  sys_clk_IBUF_BUFG | rs485_m1/uart_tx_inst/E[0]                                                                      | rs485_m1/uart_rx_inst/rx_bits_reg[7]_0 |                3 |              8 |
+|  sys_clk_IBUF_BUFG | rs485_m1/fifo_wdata                                                                             | rs485_m1/uart_rx_inst/rx_bits_reg[7]_0 |                1 |              8 |
+|  sys_clk_IBUF_BUFG | rs485_m1/fifo_inst/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwss.wsts/E[0] | rs485_m1/uart_rx_inst/rx_bits_reg[7]_0 |                3 |             16 |
+|  sys_clk_IBUF_BUFG | rs485_m0/fifo_inst/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/grss.rsts/E[0] | rs485_m0/uart_rx_inst/rx_bits_reg[7]_0 |                3 |             16 |
+|  sys_clk_IBUF_BUFG | rs485_m0/fifo_inst/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwss.wsts/E[0] | rs485_m0/uart_rx_inst/rx_bits_reg[7]_0 |                5 |             16 |
+|  sys_clk_IBUF_BUFG | rs485_m1/fifo_inst/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/grss.rsts/E[0] | rs485_m1/uart_rx_inst/rx_bits_reg[7]_0 |                4 |             16 |
+|  sys_clk_IBUF_BUFG | rs485_m1/wait_cnt                                                                               | rs485_m1/uart_rx_inst/rx_bits_reg[7]_0 |                5 |             17 |
+|  sys_clk_IBUF_BUFG | rs485_m0/wait_cnt                                                                               | rs485_m0/uart_rx_inst/rx_bits_reg[7]_0 |                5 |             17 |
+|  sys_clk_IBUF_BUFG |                                                                                                 | rs485_m1/uart_rx_inst/rx_bits_reg[7]_0 |               26 |             58 |
+|  sys_clk_IBUF_BUFG |                                                                                                 | rs485_m0/uart_rx_inst/rx_bits_reg[7]_0 |               27 |             58 |
++--------------------+-------------------------------------------------------------------------------------------------+----------------------------------------+------------------+----------------+
+
+
++--------+-----------------------+
+| Fanout | Number of ControlSets |
++--------+-----------------------+
+| 1      |                    18 |
+| 2      |                     1 |
+| 8      |                    12 |
+| 16+    |                     8 |
++--------+-----------------------+
+
+
